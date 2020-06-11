@@ -10,7 +10,7 @@ import {WALKB, BUSB, SUBWAYB, SWAPB, STARB} from '../assets/index';
 
 import SwitchToggle from '@dooboo-ui/native-switch-toggle';
 
-import styles, {colors} from '../styles/styles';
+import styles, {colors} from '../styles/FilterScreen';
 
 import {IconComponent} from '../components/Common';
 
@@ -96,19 +96,11 @@ const FilterScreen = () => {
 
   return (
     <Fragment>
-      <View style={[styles.bg1, styles.fullWidthHeight]}>
-        <View
-          style={{
-            backgroundColor: colors.white,
-            height: '40%',
-            marginTop: 10,
-            borderColor: colors.shadowColor,
-            borderWidth: 1,
-          }}>
+      <View style={[styles.filterBackground]}>
+        <View style={styles.routeType}>
           <RouteTypeComponent routeType={routeType} toggleRoute={toggleRoute} />
         </View>
-        <View
-          style={{backgroundColor: colors.white, height: '60%', marginTop: 10}}>
+        <View style={styles.transitType}>
           <TransitTypeComponent
             onTransitChange={onTransitChange}
             transitType={transitType}

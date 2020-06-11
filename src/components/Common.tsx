@@ -7,9 +7,9 @@
  */
 
 import React, {Fragment} from 'react';
-import {Text, Image, View, TouchableOpacity} from 'react-native';
+import {Text, Image, View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
-import styles, {colors, ModalStyles, fontFamily} from '../styles/styles';
+import styles, {colors, fontFamily} from '../styles/styles';
 import {WALK, BUS, SUBWAY, START, STOP} from '../assets/index';
 import Modal from 'react-native-modal';
 
@@ -316,3 +316,40 @@ export const SwitchItem = (props: any) => {
       return null;
   }
 };
+
+const ModalStyles = StyleSheet.create({
+  content: {
+    backgroundColor: 'white',
+    // padding: 22,
+    width: 225,
+    margin: 0,
+    top: -70,
+    left: 0,
+    borderRadius: 8,
+    // paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: colors.shadowColor,
+    borderWidth: 0.2,
+    shadowColor: colors.shadowColor1,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.3,
+
+    elevation: 5,
+  },
+  contentView: {
+    paddingLeft: 30,
+    paddingBottom: 20,
+    paddingTop: 20,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    // borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderColor: colors.shadowColor1,
+  },
+  contentTitle: {
+    fontSize: 20,
+    marginBottom: 12,
+  },
+});

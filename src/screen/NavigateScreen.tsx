@@ -4,7 +4,7 @@ import MapComponent from '../components/MapComponent';
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {SwitchItem} from '../components/Common';
-import styles from '../styles/styles';
+import styles from '../styles/NavigateScreen';
 import Swiper from 'react-native-swiper';
 
 const NaviggationScreen = ({route}: any) => {
@@ -92,22 +92,8 @@ const HorizontalScrollComponent = (props: any) => {
     <View style={[styles.stickyView]}>
       <Swiper showsButtons={true} loop={false} onIndexChanged={setMapCenter}>
         {legs.map((item: any) => (
-          <View
-            style={[
-              styles.carouselView,
-              styles.flex1,
-              {
-                backgroundColor: 'white',
-                alignItems: 'center',
-              },
-            ]}>
-            <View
-              style={[
-                {
-                  paddingBottom: 30,
-                  borderRadius: 5,
-                },
-              ]}>
+          <View style={[styles.carouselView, styles.flex1]}>
+            <View style={[styles.switchView]}>
               <SwitchItem data={item} />
             </View>
           </View>

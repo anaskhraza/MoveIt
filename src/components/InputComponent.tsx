@@ -7,10 +7,10 @@
  */
 
 import React, {Fragment} from 'react';
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Input} from 'react-native-elements';
 import {IconComponent} from '../components/Common';
-import styles, {colors} from '../styles/styles';
+import {fontFamily, colors} from '../styles/styles';
 
 declare interface Props {
   placeholder: string;
@@ -71,3 +71,15 @@ export const InputComponentTouch = (props: any) => {
     </Fragment>
   );
 };
+
+const styles = StyleSheet.create({
+  inputTouchComponent: {
+    paddingLeft: 10,
+    fontSize: 14,
+    fontFamily: fontFamily.semibold,
+  },
+
+  inputBorderWidth: {
+    borderBottomWidth: 0,
+  },
+});

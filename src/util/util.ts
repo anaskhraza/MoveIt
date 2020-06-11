@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
-import _ from 'lodash';
-
 import Polyline from '@mapbox/polyline';
 import Share from 'react-native-share';
 
@@ -128,8 +126,9 @@ const getTotalTime = (startTime: number, endTime: number): Array<number> => {
 const getCategory = (itinerarySummary: Array<any>): string => {
   let category = '';
   const summaryArray = itinerarySummary;
-  const groupedSummary = _.groupBy(summaryArray, 'legType');
-  const keys = _.keys(groupedSummary);
+  const groupedSummary = groupBy(summaryArray, 'legType');
+  console.log('groupedSummary => ', groupedSummary);
+  const keys = Object.keys(groupedSummary);
 
   if (keys.indexOf('Subway') > -1) {
     category = 'Subway';
@@ -140,6 +139,24 @@ const getCategory = (itinerarySummary: Array<any>): string => {
   }
 
   return category;
+};
+
+const groupBy = (arr: any, criteria: any) => {
+  return arr.reduce(function(obj: any, item: any) {
+    // Check if the criteria is a function to run on the item or a property of it
+    var key = typeof criteria === 'function' ? criteria(item) : item[criteria];
+
+    // If the key doesn't exist yet, create it
+    if (!obj.hasOwnProperty(key)) {
+      obj[key] = [];
+    }
+
+    // Push the value to the object
+    obj[key].push(item);
+
+    // Return the object to the next item in the loop
+    return obj;
+  }, {});
 };
 
 /**

@@ -9,7 +9,7 @@ import {Text, SafeAreaView, View, Image} from 'react-native';
 import {Button} from 'react-native-elements';
 import AppState from '../redux/state/AppState';
 import {InputComponentTouch} from '../components/InputComponent';
-import styles, {colors} from '../styles/styles';
+import styles, {colors} from '../styles/HomeStyles';
 import {ButtonComponent} from '../components/ButtonComponent';
 
 import AutoSuggestModal from './AutoSuggestModal';
@@ -29,6 +29,8 @@ interface AppProps {
 }
 
 const Home = () => {
+  let sourceAddr: string = '';
+  let destinationAddr: string = '';
   // console.disableYellowBox = true;
   const [updateData, setUpdateData] = useState(false);
   const [callee, setCallee] = useState('');
@@ -54,7 +56,7 @@ const Home = () => {
   };
 
   const toggleModalRoutes = () => {
-    onOpen('routeModal', modalizeRef1);
+    onOpen('routeModal', modalizeRef1, modalizeRef1);
   };
 
   const handleOnChange = (name: string, value: string) => {
@@ -68,8 +70,6 @@ const Home = () => {
     }
   };
 
-  let sourceAddr: string = '';
-  let destinationAddr: string = '';
   if (inputValues.source && inputValues.source.formatted_address) {
     sourceAddr = inputValues.source.formatted_address;
   }
@@ -113,6 +113,12 @@ const Home = () => {
   );
 };
 
+/**
+ * On Modal Open
+ * @param modalName
+ * @param modalizeRef
+ * @param modalizeRef1
+ */
 const onOpen = (modalName: string, modalizeRef: any, modalizeRef1: any) => {
   if (modalName === 'autoSuggestModal' && modalizeRef.current) {
     modalizeRef1.current.close();
@@ -128,23 +134,10 @@ const DirectionView = (props: any) => {
   const destinationAddr = props.destinationAddr;
   const toggleModalVisible = props.toggleModalVisible;
   const toggleModalRoutes = props.toggleModalRoutes;
-  const sourceIcon = {
-    name: 'circle-o',
-    type: 'font-awesome',
-    size: '18',
-    color: colors.green,
-  };
-  const destIcon = {
-    name: 'map-marker',
-    type: 'font-awesome',
-    size: '18',
-    color: colors.red,
-  };
+
   return (
     <View style={styles.textBoxCard}>
-      <Text style={[styles.fs1, styles.padding, {fontSize: 21}]}>
-        Plan my Journey
-      </Text>
+      <Text style={[styles.headerText]}>Plan my Journey</Text>
       <View style={styles.directionViewBox}>
         <View style={styles.inputComponent}>
           <InputComponentTouch

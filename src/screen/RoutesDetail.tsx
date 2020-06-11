@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-import styles, {colors} from '../styles/styles';
+import styles, {colors} from '../styles/RouteDetail';
 import {getShapes, share} from '../util/util';
 import {IconComponent, SwitchItem} from '../components/Common';
 
@@ -19,7 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import MapComponent from '../components/MapComponent';
 import ViewShot from 'react-native-view-shot';
 import {CONSTANTS} from '../util/Constants';
-import {ARROW_LEFT_1, ARROW_RIGHT_1, ARROW_LEFT} from '../assets/index';
+import {ARROW_LEFT_1, ARROW_RIGHT_1} from '../assets/index';
 import Swiper from 'react-native-swiper';
 
 const dimension = {width: '100%', height: 250};
@@ -54,16 +54,6 @@ const RoutesDetail = ({route}: any) => {
       },
     };
   }
-
-  // const onViewRef = React.useRef((viewableItemsObj: any) => {
-  //   const viewableItems = viewableItemsObj.viewableItems;
-
-  //   const visibleItem: any =
-  //     viewableItems.length > 0 ? viewableItems[0].item : '';
-  //   if (visibleItem) {
-  //     setItenaryId(visibleItem);
-  //   }
-  // });
 
   const onViewRef = React.useRef(null);
 

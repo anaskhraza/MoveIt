@@ -7,8 +7,8 @@
  */
 
 import React, {useRef, Fragment} from 'react';
-import {View, Image, Text} from 'react-native';
-import styles, {polyColor, fontFamily} from '../styles/styles';
+import {View, Image, Text, StyleSheet} from 'react-native';
+import {polyColor, fontFamily} from '../styles/styles';
 import {getCoordinates} from '../util/util';
 import MapView, {
   PROVIDER_GOOGLE,
@@ -337,5 +337,13 @@ const transformCoordinatesPolyLine = (coordinatesArray: Array<any>) => {
 
   return coordinates;
 };
+
+const styles = StyleSheet.create({
+  mapView: {
+    height: 430,
+    width: '100%',
+  },
+  map: {...StyleSheet.absoluteFillObject},
+});
 
 export default MapComponent;

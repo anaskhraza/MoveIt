@@ -21,13 +21,15 @@ import {createSelector} from 'reselect';
 import AutoSuggestAction from '../redux/action/AutoSuggestAction';
 import {Modalize} from 'react-native-modalize';
 import {SearchBar} from 'react-native-elements';
-import styles, {colors} from '../styles/styles';
+import styles, {colors} from '../styles/AutoSuggest';
 import {useDataEntries} from '../util/util';
 import {IconComponent} from '../components/Common';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import {SEARCH_LOCATION, DIAGONAL_ARROW} from '../assets/index';
+
 const Touchables =
   Platform.OS === 'ios' ? RNTouchableOpacity : TouchableOpacity;
+
 const parseAutoSuggestState = createSelector(
   (state: any) => {
     return state.AutoSuggestReducer.data ? state.AutoSuggestReducer.data : '';
@@ -42,7 +44,7 @@ const AutoSuggestModal = (props: any) => {
     AutoSuggestAction.getAutoSuggestRequest,
     searchParam,
   );
-  const {height} = useSafeAreaFrame();
+  const {height} = Dimensions.get('window');
 
   const isIphonex = height == 812;
   const iphonePlus = height == 736;
@@ -57,6 +59,7 @@ const AutoSuggestModal = (props: any) => {
           (Dimensions.get('window').height * scale) / 100,
         )
       : Dimensions.get('window').height;
+
   const modalizeRef = props.customRef;
   const onCallerPress = props.onCallerPress;
   const callee = props.caller;

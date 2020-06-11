@@ -6,7 +6,7 @@
 import React, {Fragment} from 'react';
 import {Text, View} from 'react-native';
 
-import styles, {colors} from '../styles/styles';
+import styles, {colors} from '../styles/DepartScreen';
 
 import {IconComponent} from '../components/Common';
 import {ScrollView} from 'react-native-gesture-handler';

@@ -16,7 +16,7 @@ import {useSelector} from 'react-redux';
 import MoveItActionDetail from '../redux/action/MoveItActionDetail';
 
 import {Modalize} from 'react-native-modalize';
-import styles, {colors, fontFamily} from '../styles/styles';
+import styles, {colors, fontFamily} from '../styles/RouteModal';
 import {useCallDispatcher} from '../util/util';
 import {useNavigation} from '@react-navigation/native';
 
@@ -24,7 +24,6 @@ import {ROUTE_OPTION} from '../util/Constants';
 import {WALK, BUS, SUBWAY, ARROW_LEFT} from '../assets/index';
 
 import {IconComponent} from '../components/Common';
-import {useSafeArea, useSafeAreaFrame} from 'react-native-safe-area-context';
 
 const parseDetailReducerState = createSelector(
   (state: any) => {
@@ -88,7 +87,7 @@ const RoutesModal = (props: any) => {
   const callee = props.caller;
   const destinationAddr = props.destinationAddr;
   const sourceAddr = props.sourceAddr;
-  const {height, width} = useSafeAreaFrame();
+  const {height, width} = Dimensions.get('window');
   console.log('height => ', height);
   const isIphonex = height == 812;
   const iphonePlus = height == 736;
